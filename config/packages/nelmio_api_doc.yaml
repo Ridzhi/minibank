@@ -1,0 +1,36 @@
+nelmio_api_doc:
+    documentation:
+        servers:
+            - url: https://minibank.localhost/
+              description: Public API
+        info:
+            title: Minibank
+            description: LiveXP test app
+            version: 1.0.0
+        components:
+            schemas:
+                Balance:
+                    description: User balance
+                    type: object
+                    properties:
+                        id:
+                            type: integer
+                            description: balance id
+                        title:
+                            type: string
+                            description: balance title
+                        amount:
+                            type: integer
+                            description: amount on balance
+            responses:
+                balance:
+                    description: 'User balance'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Balance'
+
+
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
